@@ -4,6 +4,7 @@ defmodule HangTen.Application do
   use Application
 
   def start(_type, _args) do
-    HangTen.Supervisor.start_link()
+    {:ok, _registry_pid} = HangTen.Registry.start_link()
+    {:ok, _sup_pid} = HangTen.Supervisor.start_link()
   end
 end
