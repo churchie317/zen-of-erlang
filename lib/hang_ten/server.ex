@@ -11,7 +11,7 @@ defmodule HangTen.Server do
     {:ok, user}
   end
 
-  def handle_call(:boom, _from, _state) do
+  def handle_cast(:boom, _state) do
     Process.exit(self(), :boom)
   end
 
