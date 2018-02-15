@@ -10,6 +10,7 @@ defmodule HangTen.User.Supervisor do
   def init(user) do
     children = [
       {HangTen.User.Stash, user},
+      {HangTen.User.Timer, user},
       {HangTen.User.SubSupervisor, user}
     ]
 

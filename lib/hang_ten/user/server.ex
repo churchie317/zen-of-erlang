@@ -4,11 +4,10 @@ defmodule HangTen.User.Server do
   use GenServer, restart: :transient, shutdown: 10_000
 
   def start_link(user) do
-    GenServer.start_link(__MODULE__, user, name: HangTen.ViaTuple.from(user, "_server"))
+    GenServer.start_link(__MODULE__, user, name: HangTen.Registry.name(user, "_server"))
   end
 
   def init(user) do
-    IO.inspect(user)
     {:ok, HangTen.User.get(user)}
   end
 

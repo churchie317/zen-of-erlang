@@ -9,13 +9,13 @@ defmodule HangTen.User do
 
   def get(user) do
     user
-    |> HangTen.ViaTuple.from("_stash")
+    |> HangTen.Registry.name("_stash")
     |> GenServer.call(:get_user)
   end
 
   def stash(user, state) do
     user
-    |> HangTen.ViaTuple.from("_stash")
+    |> HangTen.Registry.name("_stash")
     |> GenServer.cast({:set_user, state})
   end
 end

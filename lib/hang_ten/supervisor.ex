@@ -14,4 +14,9 @@ defmodule HangTen.Supervisor do
   def start_child(user) do
     DynamicSupervisor.start_child(__MODULE__, {HangTen.User.Supervisor, user})
   end
+
+  def stop_child(user) do
+    [{supervisor_pid, _value}] = Registry.lookup(:hangten_registry, user <> "_supervisor")
+    DynamicSupervisor.terminate_child(__MODULE__, supervisor_pid)
+  end
 end
