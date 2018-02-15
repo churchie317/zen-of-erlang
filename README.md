@@ -37,7 +37,7 @@ This module represents just about the simplest GenServer one could create. It ex
 
 If we start the application with `iex -S mix` and open the observer with `:observer.start`, we should see the process tree under the application's tab. Your process tree should look something liked this:
 
-[](assets/1.png)
+![](assets/1.png)
 
 If you add a user by typing `HangTen.new "somename"`, you should see the newly created process added to the supervision tree:
 
