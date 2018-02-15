@@ -3,7 +3,6 @@ defmodule HangTen do
 
   def new(user) do
     {:ok, pid} = HangTen.Supervisor.start_child(user)
-    pid
   end
 
   def stop(user_pid) do
