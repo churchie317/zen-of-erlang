@@ -41,11 +41,11 @@ If we start the application with `iex -S mix` and open the observer with `:obser
 
 If you add a user by typing `HangTen.new "somename"`, you should see the newly created process added to the supervision tree:
 
-# TODO: PUT PIC HERE
+![](assets/2.png)
 
 We can add as many processes as we want by continuing to call `HangTen.new "someothername"` and watch as our process tree grows:
 
-# TODO: PUT PIC HERE
+![](assets/3.png)
 
 Now, we'll test the fault tolerance of our newly created processes by trying to kill them. With the observer still running, let's create and kill a new process by running the following commands:
 
@@ -58,7 +58,7 @@ iex(4)> HangTen.boom! eric_pid
 
 The `** (exit) exited...` line tells us that we definitely killed the "erchurchill" process. However, if we look at our supervision tree all the child processes appear to be accounted for. In fact, if we inspect our newly created process's state with the observer, we see that our state has been preserved!
 
-# TODO: PUT PIC HERE
+![](assets/4.png)
 
 It's pretty amazing how much can be expressed with so little. Indeed this will be a theme as we start to build out this application.
 
