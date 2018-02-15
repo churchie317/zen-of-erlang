@@ -1,10 +1,10 @@
 defmodule HangTen.Registry do
   @moduledoc false
 
-  @name __MODULE__
+  use Supervisor
 
   def start_link() do
-    Supervisor.start_link(__MODULE__, [], name: @name)
+    Supervisor.start_link(__MODULE__, [], name: __MODULE__)
   end
 
   def init(_) do

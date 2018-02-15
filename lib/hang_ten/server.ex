@@ -13,7 +13,7 @@ defmodule HangTen.Server do
   end
 
   def handle_call(:boom, _from, _state) do
-    3 / 0
+    Process.exit(self(), :boom)
   end
 
   def terminate(reason, state) do
