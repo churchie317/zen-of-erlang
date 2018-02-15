@@ -3,18 +3,15 @@ defmodule HangTen.Supervisor do
 
   use DynamicSupervisor
 
-  @name __MODULE__
-
   def start_link() do
-    inspect "look"
-    DynamicSupervisor.start_link(__MODULE__, [], name: @name)
-  end
-
-  def start_child(user) do
-    DynamicSupervisor.start_child(__MODULE__, {HangTen.Server, user})
+    DynamicSupervisor.start_link(__MODULE__, [], name: __MODULE__)
   end
 
   def init(_) do
     DynamicSupervisor.init(strategy: :one_for_one)
+  end
+
+  def start_child(user) do
+    DynamicSupervisor.start_child(__MODULE__, {HangTen.User.Supervisor, user})
   end
 end

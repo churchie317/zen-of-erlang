@@ -3,14 +3,18 @@ defmodule HangTen do
 
   def new(user) do
     {:ok, pid} = HangTen.Supervisor.start_child(user)
-    pid
+    HangTen.User.new(user)
   end
 
-  def stop(user_pid) do
-    GenServer.call(user_pid, :stop)
+  def count_request(user) do
+    user
+    |> HangTen.ViaTuple.from("_server")
+    |> GenServer.cast(:increase_count)
   end
 
-  def boom!(user_pid) do
-    GenServer.call(user_pid, :boom)
+  def boom!(user) do
+    user
+    |> HangTen.ViaTuple.from("_server")
+    |> GenServer.cast(:boom)
   end
 end
