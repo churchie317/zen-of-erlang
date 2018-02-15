@@ -6,7 +6,6 @@ defmodule HangTen.Supervisor do
   @name __MODULE__
 
   def start_link() do
-    inspect "look"
     DynamicSupervisor.start_link(__MODULE__, [], name: @name)
   end
 
